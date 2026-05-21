@@ -12,7 +12,8 @@ const INVITATION = {
   time: '6:30 PM',
   place: '518 Kennesaw Dr, Smyrna, GA 30080',
   mapsQuery: '518 Kennesaw Dr, Smyrna, GA 30080',
-  whatsapp: 'https://wa.me/527751514487?text=Hola%2C%20confirmo%20mi%20asistencia%20al%20cumple%20de%20Aylana%20Atenea',
+  whatsapp:
+    'https://wa.me/527751514487?text=Hola%2C%20confirmo%20mi%20asistencia%20al%20cumple%20de%20Aylana%20Atenea',
   musicTitle: 'Este episodio de Bluey se llama',
 
   giftClothesSize: 'Talla 2',
@@ -236,7 +237,7 @@ function Hero({ audioStarted, onToggleMusic }) {
             />
           </div>
 
-          <p className="relative z-40 mx-auto mt-4 max-w-[300px] rounded-2xl bg-white/75 px-4 py-3 text-sm font-black leading-relaxed text-[#9b5c7d] shadow-sm">
+          <p className="relative z-40 mx-auto mt-4 max-w-[300px] rounded-2xl bg-white/90 px-4 py-3 text-sm font-black leading-relaxed text-[#9b5c7d] shadow-md">
             Acompáñame a festejar este día especial
           </p>
         </div>
@@ -247,18 +248,18 @@ function Hero({ audioStarted, onToggleMusic }) {
       <SafeImage
         src={ASSETS.bluey}
         alt="Bluey"
-        className="absolute bottom-5 left-2 z-20 h-36 object-contain drop-shadow-xl"
+        className="absolute bottom-1 left-1 z-20 h-28 object-contain drop-shadow-xl"
         fallback="🐶"
       />
 
       <SafeImage
         src={ASSETS.bingo}
         alt="Bingo"
-        className="absolute bottom-8 right-2 z-20 h-32 object-contain drop-shadow-xl"
+        className="absolute bottom-2 right-1 z-20 h-28 object-contain drop-shadow-xl"
         fallback="🐶"
       />
 
-      <Tree className="absolute -bottom-4 right-0 z-10 opacity-90" />
+      <Tree className="absolute -bottom-8 right-0 z-10 opacity-80" />
     </section>
   )
 }
