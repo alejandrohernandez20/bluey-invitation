@@ -13,13 +13,11 @@ const INVITATION = {
   place: '518 Kennesaw Dr, Smyrna, GA 30080',
   mapsQuery: '518 Kennesaw Dr, Smyrna, GA 30080',
   whatsapp:
-    'https://wa.me/527751514487?text=Hola%2C%20confirmo%20mi%20asistencia%20al%20cumple%20de%20Aylana%20Atenea',
+    'https://wa.me/527751514487?text=Hola%2C%20confirmo%20mi%20asistencia%20al%20cumplea%C3%B1os%20de%20Aylana%20Atenea%20%F0%9F%92%96%0A%0ANombre%3A%0AN%C3%BAmero%20de%20personas%3A',
   musicTitle: 'Este episodio de Bluey se llama',
 
-  giftClothesSize: 'Talla 2',
-  giftDiaperSize: 'Pañal etapa 5',
-  giftShoeSize: 'Talla 14',
-  giftFavoriteColors: 'Rosa, morado y azul',
+  giftClothesSize: 'Talla 3',
+  giftEnvelopeRain: 'Lluvia de sobres',
 }
 
 const ASSETS = {
@@ -27,7 +25,7 @@ const ASSETS = {
   bluey: '/bluey/bluey.png',
   bingo: '/bluey/bingo.png',
   family: '/bluey/family.png',
-  childPhoto: '/bluey/foto-nino.jpg',
+  childPhoto: '/bluey/foto-nino.jpeg',
   danceGif: '/bluey/bluey-bingo-baile.gif',
 }
 
@@ -444,65 +442,91 @@ function LocationSection() {
 function GiftSection() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[#ffd1e8] to-[#ffeef7] px-5 py-10 text-center">
+      <EnvelopeRain />
       <PawBackground />
 
       <SafeImage
         src={ASSETS.bluey}
         alt="Bluey"
-        className="absolute bottom-4 right-0 h-36 object-contain drop-shadow-xl"
+        className="absolute bottom-4 right-0 z-10 h-36 object-contain drop-shadow-xl"
         fallback="🐶"
       />
 
-      <div className="relative z-10 mx-auto max-w-[360px] rounded-[2rem] bg-white/60 px-5 py-7 shadow-xl backdrop-blur-sm ring-4 ring-white/70">
+      <div className="relative z-20 mx-auto max-w-[360px] rounded-[2rem] bg-white/70 px-5 py-7 shadow-xl backdrop-blur-sm ring-4 ring-white/70">
         <h2 className="text-2xl font-black uppercase text-[#ff4fa3] drop-shadow-[0_2px_0_white]">
           Sugerencias de regalo
         </h2>
 
         <p className="mt-3 text-sm font-bold leading-relaxed text-[#9b5c7d]">
-          Si deseas obsequiarme algo, aquí te dejamos algunas recomendaciones:
+          Si deseas obsequiarme algo, aquí te dejamos unas recomendaciones:
         </p>
 
         <div className="mt-5 space-y-3">
-          <GiftItem
-            label="Talla de ropa"
-            value={INVITATION.giftClothesSize}
-          />
-
-          <GiftItem
-            label="Talla de pañal"
-            value={INVITATION.giftDiaperSize}
-          />
-
-          <GiftItem
-            label="Talla de calzado"
-            value={INVITATION.giftShoeSize}
-          />
-
-          <GiftItem
-            label="Colores favoritos"
-            value={INVITATION.giftFavoriteColors}
-            smaller
-          />
+          <GiftItem label="Talla de ropa" value={INVITATION.giftClothesSize} />
+          <GiftItem label="Lluvia de sobres" value={<MoneyEnvelopeIcon />} />
         </div>
       </div>
     </section>
   )
 }
 
-function GiftItem({ label, value, smaller = false }) {
+function GiftItem({ label, value }) {
   return (
-    <div className="rounded-2xl bg-white/90 px-4 py-4 shadow-md ring-2 ring-pink-100">
+    <div className="rounded-2xl bg-white/90 px-4 py-5 shadow-md ring-2 ring-pink-100">
       <p className="text-xs font-black uppercase tracking-widest text-[#c85b9a]">
         {label}
       </p>
 
-      <p
-        className={`mt-1 font-black text-[#d94695] ${
-          smaller ? 'text-xl' : 'text-2xl'
+      <div className="mt-2 flex justify-center text-3xl font-black text-[#d94695]">
+        {value}
+      </div>
+    </div>
+  )
+}
+
+function MoneyEnvelopeIcon({ small = false }) {
+  return (
+    <div
+      className={`relative mx-auto ${
+        small ? 'h-8 w-10' : 'h-16 w-20'
+      } rounded-lg bg-[#fff6cf] shadow-md ring-2 ring-[#f3c96d]`}
+    >
+      <div className="absolute inset-0 overflow-hidden rounded-lg">
+        <div className="absolute left-0 top-0 h-full w-full bg-[linear-gradient(145deg,transparent_49%,#e7bd5c_50%,transparent_51%),linear-gradient(35deg,transparent_49%,#e7bd5c_50%,transparent_51%)]" />
+      </div>
+
+      <div
+        className={`absolute left-1/2 top-1/2 grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-[#7bcf7a] font-black text-white shadow-sm ${
+          small ? 'h-5 w-5 text-[11px]' : 'h-9 w-9 text-lg'
         }`}
       >
-        {value}
-      </p>
+        $
+      </div>
+    </div>
+  )
+}
+
+function EnvelopeRain() {
+  return (
+    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-80">
+      {Array.from({ length: 14 }).map((_, index) => (
+        <div
+          key={index}
+          className="absolute"
+          style={{
+            left: `${(index * 17) % 95}%`,
+            top: `${(index * 29) % 100}%`,
+            transform: `rotate(${index % 2 === 0 ? '-12deg' : '14deg'})`,
+            opacity: index % 3 === 0 ? 0.45 : 0.75,
+          }}
+        >
+          {index % 4 === 0 ? (
+            <MoneyEnvelopeIcon small />
+          ) : (
+            <span className="text-2xl">✉️</span>
+          )}
+        </div>
+      ))}
     </div>
   )
 }
