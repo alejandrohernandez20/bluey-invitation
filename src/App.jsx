@@ -13,8 +13,7 @@ const INVITATION = {
   place: '518 Kennesaw Dr, Smyrna, GA 30080',
   mapsQuery: '518 Kennesaw Dr, Smyrna, GA 30080',
   whatsapp:
-    'https://wa.me/16787492073?text=Hola%2C%20confirmo%20mi%20asistencia%20al%20cumplea%C3%B1os%20de%20Aylana%20Atenea%20%F0%9F%92%96%0A%0ANombre%3A%0AN%C3%BAmero%20de%20personas%3A',
-  musicTitle: 'Este episodio de Bluey se llama',
+    'https://wa.me/16787492073?text=Hola%2C%20confirmo%20mi%20asistencia%20al%20cumplea%C3%B1os%20de%20Aylana%20Atenea%20%F0%9F%92%96%0A%0A  musicTitle: 'Este episodio de Bluey se llama',
 
   giftClothesSize: 'Talla 3',
   giftEnvelopeRain: 'Lluvia de sobres',
